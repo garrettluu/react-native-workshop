@@ -1,0 +1,138 @@
+import { Invert } from "mdx-deck";
+import { CodeSurfer } from "code-surfer";
+
+import Title from "./layouts/Title";
+import CheckIn from "./layouts/CheckIn";
+import CheckInButton from "./layouts/CheckInButton";
+import Section from "./layouts/Section";
+import SectionNumber from "./layouts/SectionNumber";
+import TextSlide from "./layouts/TextSlide";
+import HackFooter from "./components/HackFooter";
+
+import hackTheme from "./theme";
+import { github } from "@code-surfer/themes";
+export const theme = hackTheme;
+
+import hackLogo from "./images/logo-with-text.svg";
+
+# Hack Slides
+
+<HackFooter />
+
+---
+
+# Titles
+
+## For beginning presentations
+
+<HackFooter />
+
+---
+
+<Title darkMode>
+
+
+ACM Hack presents:
+
+# Lorem Ipsum
+
+## Dolor sit amet
+
+</Title>
+
+
+---
+
+<CheckIn code="l33t" />
+
+---
+
+<CheckInButton code="l33t" />
+
+---
+
+<Section>
+
+
+# Lorem Ipsum
+
+## Dolor sit amet
+
+</Section>
+
+
+---
+
+<SectionNumber number="1" text="Lorem ipsum dolor" />
+
+---
+
+<SectionNumber number="2" text="Lorem ipsum dolor" />
+
+---
+
+<SectionNumber number="3" text="Lorem ipsum dolor" />
+
+---
+
+<TextSlide>
+
+
+This is a test with a **really long line** I hope it still wraps and looks kinda good pls? What else do I type anymore
+
+</TextSlide>
+
+
+---
+
+# Code snippets
+
+## For showcasing and explaining code
+
+---
+
+# Inline code snippet with text
+
+```javascript
+export const isEven = (i) => {
+    if ((i == 0) && (i%2 == 0) && (i&1 == 0))
+        return true
+    if ((i == 1) && (i%2 == 0) && (i&1 == 0))
+        return true
+    if ((i == 2) && (i%2 == 0) && (i&1 == 0))
+        return true
+    if ((i == 3) && (i%2 == 0) && (i&1 == 0))
+        return true
+```
+
+---
+
+<CodeSurfer theme={github}>
+
+
+```js title="Code snippets with code-surfer components"
+export const isEven = (i) => {
+    if ((i == 0) && (i%2 == 0) && (i&1 == 0))
+        return true
+    if ((i == 1) && (i%2 == 0) && (i&1 == 0))
+        return true
+    if ((i == 2) && (i%2 == 0) && (i&1 == 0))
+        return true
+    if ((i == 3) && (i%2 == 0) && (i&1 == 0))
+        return true
+```
+
+```js 1 subtitle="Highlight specific lines of code"
+export const isEven = (i) => {
+    if ((i == 0) && (i%2 == 0) && (i&1 == 0))
+        return true
+    if ((i == 1) && (i%2 == 0) && (i&1 == 0))
+        return true
+    if ((i == 2) && (i%2 == 0) && (i&1 == 0))
+        return true
+    if ((i == 3) && (i%2 == 0) && (i&1 == 0))
+        return true
+```
+
+</CodeSurfer>
+
