@@ -4,10 +4,10 @@ const ACM_PORTAL = "https://members.acmucsd.com/checkin?code=";
 const CheckInButton = ({ code }) => {
   const link = ACM_PORTAL + code;
   return (
-    <div className="CheckInButton">
-      <h1>Check in</h1>
-      <h2>{code}</h2>
-      <a className="button" href={link}>
+    <div className='CheckInButton'>
+      <h2>Check in</h2>
+      <h3>{code}</h3>
+      <a className='button' href={link}>
         Let's go
       </a>
       <style jsx>{`
@@ -21,7 +21,7 @@ const CheckInButton = ({ code }) => {
           box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
             0 3px 10px 0 rgba(0, 0, 0, 0.19);
         }
-        h2 {
+        h3 {
           width: 512px;
           text-align: center;
           font-weight: 400;

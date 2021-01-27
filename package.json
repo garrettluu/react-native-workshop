@@ -4,7 +4,8 @@
   "description": "MDX Deck slide templates for ACM Hack workshops",
   "main": "index.js",
   "scripts": {
-    "start": "mdx-deck example.mdx"
+    "start": "mdx-deck index.mdx",
+    "build": "mdx-deck build index.mdx"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
     "code-surfer": "^3.1.1",
     "gatsby-source-filesystem": "^2.10.0",
     "mdx-deck": "4.0.0",
+    "react-expo-snack": "^1.0.0",
     "react-syntax-highlighter": "^15.4.3",
     "theme-ui": "^0.3.3"
   }

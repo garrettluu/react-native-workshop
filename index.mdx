@@ -1,0 +1,1079 @@
+import { CodeSurfer } from "code-surfer";
+import { github } from "@code-surfer/themes";
+import ExpoSnack from "react-expo-snack";
+import Title from "./layouts/Title";
+import CheckInButton from "./layouts/CheckInButton";
+import HackFooter from "./components/HackFooter";
+import Section from "./layouts/Section";
+import SectionNumber from "./layouts/SectionNumber";
+import TextSlide from "./layouts/TextSlide";
+
+import hackTheme from "./theme";
+export const theme = hackTheme;
+
+<Footer>
+
+<HackFooter />
+
+</Footer>
+
+<Title darkMode>
+
+# React Native Workshop
+
+## Slides: acmurl.com/react-native-slides
+
+## Check in: `reACT`
+
+</Title>
+
+---
+
+# Don't forget!
+
+<CheckInButton code='reACT' />
+
+---
+
+# About these slides...
+
+- These slides were made using [mdx-deck](https://github.com/jxnblk/mdx-deck).
+- Use the **arrow keys** or **spacebar** to navigate between them!
+
+**Note:** These slides are NOT responsive because CSS is hard, so it's best to view them on a 16:9 screen.
+
+### Now let's begin!
+
+---
+
+<Section>
+
+# Introduction
+
+## What is React Native?
+
+</Section>
+
+---
+
+# What is React Native?
+
+- A **framework** for building **native mobile apps** with <b>React</b>
+  - **Native apps** run directly on your phone/tablet rather than from the browser
+  - <b>React</b> itself is a JavaScript framework for building user interfaces
+
+## There's a few reasons why this is good...
+
+---
+
+# Why React Native?
+
+- Current mobile dev landscape: 😕
+  - <b>Android</b> - very hard, requires in-depth Java/Kotlin experience
+  - <b>iOS</b> - limited to Mac, which is 💸
+  - <b>Flutter</b> - very promising, but also very new
+
+---
+
+# Why React Native?
+
+- Generally easier to grasp, especially for people coming from web dev
+- Access to the amazingness of `npm`
+  - Large **ecosystem** of JavaScript libraries and packages
+- **Cross-platform** - you can write **one codebase** for both iOS and Android!
+
+---
+
+<Section>
+
+# React Crash Course
+
+## We'll be covering:
+
+1. JSX and Components
+2. Props and State
+3. Brief Intro to Hooks
+
+</Section>
+
+---
+
+<SectionNumber number='1' text='JSX and Components' />
+
+## The <b>building blocks</b> of React
+
+---
+
+# What are components?
+
+- Allow you to **reuse** snippets of code without the need to copy-paste
+  - Ideal if you have a bunch of similar-looking elements
+- In React, **everything is a component!**
+  - The app is one big component
+  - Contains many smaller components inside
+
+---
+
+# How do we write components?
+
+- In React, we can write components with **JSX**
+  - Looks like HTML, but stuck in the middle of some JavaScript
+- We'll go more in-depth about what each line means later
+
+```js
+// This line is required if we want to write JSX
+import React from "react";
+
+// 'Foo' is a very basic component here
+const Foo = () => {
+  return <h1>Hello world!</h1>;
+};
+```
+
+---
+
+# Class-based components
+
+## Very classy indeed 🧐
+
+- The **old way** of writing components
+- Good stepping stone if you are familiar with <b>OOP</b> (Java, C++, etc.)
+- Kind of tedious to write
+- Will be **deprecated** from React eventually ⚰️
+
+## We'll go over a quick example next.
+
+---
+
+<CodeSurfer theme={github}>
+
+```js title="Example of a class-based component"
+import React from "react";
+
+class Example extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>React is cool!</h1>
+        <h2>or is it...?</h2>
+      </div>
+    );
+  }
+}
+```
+
+```diff 1 subtitle="Declares that we will be writing React code"
+
+```
+
+```diff 3 subtitle="Example is a type of component"
+
+```
+
+```diff 4:11 subtitle="The render function determines what gets output"
+
+```
+
+</CodeSurfer>
+
+---
+
+# Functional components
+
+## The cooler way to write components 😎
+
+- The most basic form of a component
+- Simply a **function** that returns some **JSX**.
+
+---
+
+<CodeSurfer theme={github}>
+
+```js title="Same component, written as a function"
+import React from "react";
+
+const Example = () => {
+  return (
+    <div>
+      <h1>React is cool!</h1>
+      <h2>or is it...?</h2>
+    </div>
+  );
+};
+```
+
+```diff 3 subtitle="Example takes no arguments and returns a div with stuff inside"
+
+```
+
+</CodeSurfer>
+
+---
+
+# Why bother with the distinction?
+
+- In the old days, class components had access to **additional features**
+  - **Lifecycle** methods - control what happens before and after
+  - **State** - keep track of data
+- However, functional components have gotten these features via <b>hooks</b>
+
+## To stay consistent, we'll be using functional components from now on!
+
+---
+
+<SectionNumber number='2' text='Props and State' />
+
+## Probably the most powerful features in React
+
+---
+
+# Props
+
+- Short for **properties**
+- Allows you to pass specific attributes to a component
+- In functional components, they are simply the **arguments** of the function
+
+```js
+const NewsArticle = ({ title, date, text }) => (
+  <div>
+    <h1>{title}</h1>
+    <h2>{date}</h2>
+    <p>{text}</p>
+  </div>
+);
+```
+
+---
+
+# State
+
+- Keeps track of specific data that can change at any time
+- With the `useState` hook, you can **use state** in functional components
+  - Takes the **default value** as an argument
+  - Returns a tuple containing the state variable and a function to change it
+
+```js
+import React, { useState } from "react";
+const Cookie = () => {
+  const [clicks, setClicks] = useState(0);
+  //...
+};
+```
+
+---
+
+<SectionNumber number='3' text='Intro to Hooks' />
+
+## "Hook" into features of React
+
+---
+
+# React hooks
+
+- Relatively new feature of React
+- Allow you to use certain features of React in functional components
+- `useState` is an example of a hook
+- You can even write your own hooks!
+
+---
+
+# `useEffect` hook
+
+- At its core, `useEffect` controls what happens when your component is rendered or derendered
+  - Previously, you could only do this with class components
+
+```js
+useEffect(() => {
+  // component rendered
+  return () => {
+    //component derendered
+  };
+});
+```
+
+---
+
+# `useEffect` hook
+
+- Also used to update things or run code when a **dependency** is changed
+  - Dependencies are passed in as an array
+  - Empty array = function runs on **first** render of component
+
+```js
+useEffect(() => {
+  // do something
+}, [dependency]);
+```
+
+---
+
+<Section>
+
+# Live coding: build an app!
+
+## Now for the fun part!
+
+We'll be building a simple (but ugly) note-taking app
+
+</Section>
+
+---
+
+# Demo
+
+---
+
+# Before we begin...
+
+(This is only if you want to follow along locally)
+
+- Download <b>Node.js</b> and <b>npm</b> [here](https://nodejs.org/en/download/)
+- Install <b>Expo</b> with `npm install -g expo`
+- Have an Android or iOS device/emulator
+  - Be sure to download the expo app!
+- **Starter code**: [click here](https://github.com/garrettluu/react-native-workshop-code)
+
+---
+
+# React Native Components
+
+- React Native uses a slightly different set of components
+- Native, mobile components instead of web-based
+  - Dependent on native Android and iOS components
+- Here's a basic conversion from web to native:
+
+| Native         | Web                          |
+| -------------- | ---------------------------- |
+| `<View>`       | `<div>` (but doesn't scroll) |
+| `<ScrollView>` | `<div>`                      |
+| `<Text>`       | `<p>`                        |
+| `<TextInput>`  | `<input>`                    |
+
+---
+
+# Expo
+
+- Provides a framework for running and developing React Native apps
+  - No need to install Android/iOS SDKs!
+
+## **Running your app**
+
+1. Use the command `yarn start` or `expo start`. A browser window should open up.
+2. Download the Expo app on your phone
+3. Scan the QR code on the browser window that opened with the Expo app
+   - If this doesn't work, try selecting the "Tunnel" option above the QR code
+   - Alternatively, click **Run in web browser** if you don't want to use your device
+
+---
+
+# Project Structure
+
+- `📂 screens` contains a layout/screen of the app
+  - Only 2 screens: `Home` and `EditNote`
+- `📂 components` contains isolated custom components
+  - Only 1: `Note` for displaying our notes
+- `App.js` is the top-level container that wraps everything together
+- `storage.js` is just a mock database for demo purposes
+
+## Let's take a look at `Home.js`, our home screen.
+
+---
+
+<CodeSurfer theme={github}>
+
+```jsx title="Home.js"
+export default function Home() {
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView>
+        <View style={styles.container}>
+          <Text style={styles.title}>Hello World!</Text>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+  },
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 20,
+  },
+  title: {
+    fontSize: 36,
+    fontWeight: "bold",
+  },
+});
+```
+
+```diff 3,9 subtitle="SafeAreaView keeps the contents inside the screen"
+
+```
+
+```diff 4,8 subtitle="ScrollView allows us to scroll"
+
+```
+
+```diff 13:28 subtitle="Instead of CSS, this is how we style components"
+
+```
+
+</CodeSurfer>
+
+---
+
+## **Let's write our first component, `Note.js`! 👨‍💻**
+
+---
+
+<CodeSurfer theme={github}>
+
+```jsx title="Note.js"
+import React from "react";
+import { StyleSheet, Text, Button, View } from "react-native";
+
+export default function Note({ title, content, onClick }) {
+  return <View style={styles.container}></View>;
+}
+
+const styles = StyleSheet.create({
+  container: {
+    borderWidth: 1,
+    borderColor: "black",
+    width: "100%",
+    padding: 5,
+  },
+  h1: {
+    fontSize: 24,
+  },
+});
+```
+
+```jsx title="Note.js" subtitle="First, let's add a title component, displaying the title prop"
+import React from "react";
+import { StyleSheet, Text, Button, View } from "react-native";
+
+export default function Note({ title, content, onClick }) {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.h1}>{title}</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    borderWidth: 1,
+    borderColor: "black",
+    width: "100%",
+    padding: 5,
+  },
+  h1: {
+    fontSize: 24,
+  },
+});
+```
+
+```jsx title="Note.js" subtitle="Another Text component to display the content"
+import React from "react";
+import { StyleSheet, Text, Button, View } from "react-native";
+
+export default function Note({ title, content, onClick }) {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.h1}>{title}</Text>
+      <Text>{content}</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    borderWidth: 1,
+    borderColor: "black",
+    width: "100%",
+    padding: 5,
+  },
+  h1: {
+    fontSize: 24,
+  },
+});
+```
+
+```jsx title="Note.js" subtitle="Finally, a button for editting the note"
+import React from "react";
+import { StyleSheet, Text, Button, View } from "react-native";
+
+export default function Note({ title, content, onClick }) {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.h1}>{title}</Text>
+      <Text>{content}</Text>
+      <Button title='Edit note' onPress={onClick} />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    borderWidth: 1,
+    borderColor: "black",
+    width: "100%",
+    padding: 5,
+  },
+  h1: {
+    fontSize: 24,
+  },
+});
+```
+
+</CodeSurfer>
+
+---
+
+# What did we just do?
+
+- `Note` is a <b>component</b> with 3 props: **title**, **content**, and **onClick**
+  - **title** and **content** are strings displayed as `Text` components
+  - **onClick** is a function to be passed in later
+- `Button` is a new component, and we are passing the previous onClick function as a prop
+
+```jsx
+// Example usage
+<Note title='CSE 140L' content='Pain' onClick={someFunction} />
+```
+
+---
+
+# Our first component!
+
+Let's stop and make sure our component works.
+
+- Add a few `Note` components on the `Home` screen.
+- You should see each of them show up with their corresponding props filled in
+
+---
+
+## **Now let's fill out `EditNote.js` 👨‍💻**
+
+---
+
+<CodeSurfer theme={github}>
+
+```jsx title="EditNote.js"
+export default function EditNote({ navigation }) {
+  return (
+    <SafeAreaView style={styles.container}>
+    </SafeAreaView>
+  );
+}
+```
+
+```jsx title="EditNote.js" 1[34:47] subtitle="Ignore the navigation prop for now; it becomes important later"
+export default function EditNote({ navigation }) {
+  return (
+    <SafeAreaView style={styles.container}>
+    </SafeAreaView>
+  );
+}
+```
+
+```jsx title="EditNote.js" subtitle="State variables to keep track of the text fields"
+export default function EditNote({ navigation }) {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  return (
+    <SafeAreaView style={styles.container}>
+    </SafeAreaView>
+  );
+}
+```
+
+```jsx title="EditNote.js" subtitle="The 2 main text fields, using TextInput components"
+export default function EditNote({ navigation }) {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  return (
+    <SafeAreaView style={styles.container}>
+      <TextInput
+        style={styles.title}
+        placeholder='Note Title'
+        value={title}
+        onChangeText={(text) => {
+          setTitle(text);
+        }}
+      />
+      <TextInput
+        multiline
+        placeholder='Note content'
+        value={content}
+        onChangeText={(text) => {
+          setContent(text);
+        }}
+      />
+    </SafeAreaView>
+  );
+}
+```
+
+```jsx title="EditNote.js" subtitle="A button to save data"
+export default function EditNote({ navigation }) {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  return (
+    <SafeAreaView style={styles.container}>
+      <TextInput
+        style={styles.title}
+        placeholder='Note Title'
+        value={title}
+        onChangeText={(text) => {
+          setTitle(text);
+        }}
+      />
+      <TextInput
+        multiline
+        placeholder='Note content'
+        value={content}
+        onChangeText={(text) => {
+          setContent(text);
+        }}
+      />
+      <Button
+        title='Save'
+        onPress={() => {
+          saveData(title, content);
+        }}
+      />
+    </SafeAreaView>
+  );
+}
+```
+
+</CodeSurfer>
+
+---
+
+# Navigation 🗺
+
+Navigating between screens is a bit different from React
+
+- We'll be using the [React Navigation](https://reactnavigation.org/) library
+- Most basic form: <b>Stack Navigator</b>
+  - Each screen is **"pushed"** to the stack as you navigate
+  - When you go back, it gets **"popped"**
+- For our app, we only have 2 screens: **`Home`** and **`EditNote`**
+
+As a best practice, navigation should be handled at the **screen** level (instead of components)
+
+---
+
+## **Let's modify `App.js` to support navigation 👨‍💻**
+
+---
+
+<CodeSurfer theme={github}>
+
+```jsx title="App.js"
+export default function App() {
+  return <Home />;
+}
+```
+
+```jsx title="App.js" subtitle="First, let's create a stack navigator"
+const Stack = createStackNavigator();
+export default function App() {
+  return <Home />;
+}
+```
+
+```jsx title="App.js" subtitle="Everything goes inside NavigationContainer"
+const Stack = createStackNavigator();
+export default function App() {
+  return (
+    <NavigationContainer>
+    </NavigationContainer>
+  );
+}
+```
+
+```jsx title="App.js" subtitle="Add our screen names and their corresponding components"
+const Stack = createStackNavigator();
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='Home'>
+        <Stack.Screen name='Home' component={Home} />
+        <Stack.Screen name='EditNote' component={EditNote} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+```
+
+</CodeSurfer>
+
+---
+
+# Navigating between screens
+
+We've defined the different possible screens, but we haven't defined how to go between them
+
+---
+
+<CodeSurfer theme={github}>
+
+
+```jsx title="Home.js"
+export default function Home() {
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView>
+        <View style={styles.container}>
+          <Text style={styles.title}>Hello World!</Text>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+```
+
+
+```jsx title="Home.js" subtitle="The navigation prop handles navigation"
+export default function Home({ navigation }) {
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView>
+        <View style={styles.container}>
+          <Text style={styles.title}>Hello World!</Text>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+```
+
+```jsx title="Home.js" subtitle="Let's add a button that takes us to EditNote"
+export default function Home({ navigation }) {
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView>
+        <View style={styles.container}>
+          <Text style={styles.title}>Hello World!</Text>
+            <Button
+              title='New Note'
+              onPress={() => {
+                navigation.navigate("EditNote");
+              }}
+            />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+```
+</CodeSurfer>
+
+---
+
+## **Now back to `EditNote.js`... 👨‍💻**
+
+---
+
+<CodeSurfer theme={github}>
+
+```jsx title="EditNote.js"
+export default function EditNote({ navigation }) {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  return (
+    <SafeAreaView style={styles.container}>
+      <TextInput
+        style={styles.title}
+        placeholder='Note Title'
+        value={title}
+        onChangeText={(text) => {
+          setTitle(text);
+        }}
+      />
+      <TextInput
+        multiline
+        placeholder='Note content'
+        value={content}
+        onChangeText={(text) => {
+          setContent(text);
+        }}
+      />
+      <Button
+        title='Save'
+        onPress={() => {
+          saveData(title, content);
+        }}
+      />
+    </SafeAreaView>
+  );
+}
+```
+
+```jsx title="EditNote.js" subtitle="This function 'pops' the screen from the stack"
+export default function EditNote({ navigation }) {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  return (
+    <SafeAreaView style={styles.container}>
+      <TextInput
+        style={styles.title}
+        placeholder='Note Title'
+        value={title}
+        onChangeText={(text) => {
+          setTitle(text);
+        }}
+      />
+      <TextInput
+        multiline
+        placeholder='Note content'
+        value={content}
+        onChangeText={(text) => {
+          setContent(text);
+        }}
+      />
+      <Button
+        title='Save'
+        onPress={() => {
+          saveData(title, content);
+          navigation.goBack();
+        }}
+      />
+    </SafeAreaView>
+  );
+}
+```
+
+```jsx title="EditNote.js" subtitle="route.params allows us to pass data between screens"
+export default function EditNote({ route, navigation }) {
+  const [title, setTitle] = useState(route.params.title ?? "");
+  const [content, setContent] = useState(route.params.content ?? "");
+  return (
+    <SafeAreaView style={styles.container}>
+      <TextInput
+        style={styles.title}
+        placeholder='Note Title'
+        value={title}
+        onChangeText={(text) => {
+          setTitle(text);
+        }}
+      />
+      <TextInput
+        multiline
+        placeholder='Note content'
+        value={content}
+        onChangeText={(text) => {
+          setContent(text);
+        }}
+      />
+      <Button
+        title='Save'
+        onPress={() => {
+          saveData(title, content);
+          navigation.goBack();
+        }}
+      />
+    </SafeAreaView>
+  );
+}
+```
+
+</CodeSurfer>
+
+---
+
+# Final steps 
+
+Displaying all the current notes in the homescreen
+
+- We will be storing all of the notes as a **state variable**
+- `useEffect` will help us update the state as needed
+
+---
+
+<CodeSurfer theme={github}>
+
+```jsx title="Home.js"
+export default function Home({ navigation }) {
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView>
+        <View style={styles.container}>
+          <Text style={styles.title}>Hello World!</Text>
+            <Button
+              title='New Note'
+              onPress={() => {
+                navigation.navigate("EditNote");
+              }}
+            />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+```
+
+```jsx title="Home.js"
+export default function Home({ navigation }) {
+  const [notes, setNotes] = useState([]);
+  useEffect(() => {
+    // Filling this in next
+  })
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView>
+        <View style={styles.container}>
+          <Text style={styles.title}>Hello World!</Text>
+            <Button
+              title='New Note'
+              onPress={() => {
+                navigation.navigate("EditNote");
+              }}
+            />
+            {notes}
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+```
+
+```jsx title="Home.js" subtitle="Get all data from the mock DB"
+export default function Home({ navigation }) {
+  const [notes, setNotes] = useState([]);
+  useEffect(() => {
+    getAllData()
+  })
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView>
+        <View style={styles.container}>
+          <Text style={styles.title}>Hello World!</Text>
+            <Button
+              title='New Note'
+              onPress={() => {
+                navigation.navigate("EditNote");
+              }}
+            />
+            {notes}
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+```
+
+```jsx title="Home.js"
+export default function Home({ navigation }) {
+  const [notes, setNotes] = useState([]);
+  useEffect(() => {
+    getAllData()
+    .then((data) => {
+      // Do something with the data!
+    });
+  })
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView>
+        <View style={styles.container}>
+          <Text style={styles.title}>Hello World!</Text>
+            <Button
+              title='New Note'
+              onPress={() => {
+                navigation.navigate("EditNote");
+              }}
+            />
+            {notes}
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+```
+
+```jsx title="Home.js" subtitle="The rest of the fking owl"
+export default function Home({ navigation }) {
+  const [notes, setNotes] = useState([]);
+  useEffect(() => {
+    getAllData()
+    .then((data) => {
+      setNotes(
+        data.map((note) => {
+          return (
+            <Note
+              title={note[0]}
+              content={note[1]}
+              onClick={() => {
+                navigation.navigate("EditNote", {
+                  title: note[0],
+                  content: note[1],
+                });
+              }}
+            />
+          );
+        }),
+      );
+    });
+  })
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView>
+        <View style={styles.container}>
+          <Text style={styles.title}>Hello World!</Text>
+            <Button
+              title='New Note'
+              onPress={() => {
+                navigation.navigate("EditNote");
+              }}
+            />
+            {notes}
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+```
+
+</CodeSurfer>
+
+---
+
+# Woah what just happened?
+
+In the last step, we did a few important things.
+1. Each note in the database is an array of `[title, content]`
+2. For each of these notes, we **programmatically generated** a `Note` component
+3. In the `onClick` of each `Note`, we handle navigation; `title` and `content` are passed as route params
+
+---
+
+<Section>
+
+# Final demo! 🙌
+
+## Run your app and make sure everything works!
+
+</Section>
+
+---
+
+# Additional resources
+
+## If you're interested in learning more
+
+- **[ReactJS docs](https://reactjs.org/)**
+  - Brush up on the <b>fundamentals</b>
+- **[Official React Native docs](https://reactnative.dev/)**
+  - <b>Mobile-specific</b> concepts and guides
+- **[React Navigation](https://reactnavigation.org/)**
+  - Advanced navigation tricks

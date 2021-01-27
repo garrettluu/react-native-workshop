@@ -18,10 +18,10 @@ const Title = ({ darkMode, children }) => {
         justifyContent: "center",
         paddingLeft: "10%",
         color: "white",
+        zIndex: 10,
       }}
     >
       {children}
-      <style jsx>` `</style>
     </div>
   );
 };
