@@ -1,5 +1,4 @@
 import { CodeSurfer } from "code-surfer";
-import { github } from "@code-surfer/themes";
 import ExpoSnack from "react-expo-snack";
 import Title from "./layouts/Title";
 import CheckInButton from "./layouts/CheckInButton";
@@ -8,8 +7,8 @@ import Section from "./layouts/Section";
 import SectionNumber from "./layouts/SectionNumber";
 import TextSlide from "./layouts/TextSlide";
 
-import hackTheme from "./theme";
-export const theme = hackTheme;
+import {slideTheme, codeTheme} from "./theme";
+export const theme = slideTheme;
 
 <Footer>
 
@@ -23,7 +22,7 @@ export const theme = hackTheme;
 
 ## Slides: acmurl.com/react-native-slides
 
-## Check in: `reACT`
+## Check in: `mobileapp`
 
 </Title>
 
@@ -31,13 +30,13 @@ export const theme = hackTheme;
 
 # Don't forget!
 
-<CheckInButton code='reACT' />
+<CheckInButton code='mobileapp' />
 
 ---
 
 # About these slides...
 
-- These slides were made using [mdx-deck](https://github.com/jxnblk/mdx-deck).
+- These slides were made using [mdx-deck](https://codeTheme.com/jxnblk/mdx-deck).
 - Use the **arrow keys** or **spacebar** to navigate between them!
 
 **Note:** These slides are NOT responsive because CSS is hard, so it's best to view them on a 16:9 screen.
@@ -145,7 +144,7 @@ const Foo = () => {
 
 ---
 
-<CodeSurfer theme={github}>
+<CodeSurfer theme={codeTheme}>
 
 ```js title="Example of a class-based component"
 import React from "react";
@@ -187,7 +186,7 @@ class Example extends React.Component {
 
 ---
 
-<CodeSurfer theme={github}>
+<CodeSurfer theme={codeTheme}>
 
 ```js title="Same component, written as a function"
 import React from "react";
@@ -379,7 +378,7 @@ We'll be building a simple (but ugly) note-taking app
 
 ---
 
-<CodeSurfer theme={github}>
+<CodeSurfer theme={codeTheme}>
 
 ```jsx title="Home.js"
 export default function Home() {
@@ -432,7 +431,7 @@ const styles = StyleSheet.create({
 
 ---
 
-<CodeSurfer theme={github}>
+<CodeSurfer theme={codeTheme}>
 
 ```jsx title="Note.js"
 import React from "react";
@@ -564,7 +563,7 @@ Let's stop and make sure our component works.
 
 ---
 
-<CodeSurfer theme={github}>
+<CodeSurfer theme={codeTheme}>
 
 ```jsx title="EditNote.js"
 export default function EditNote({ navigation }) {
@@ -677,7 +676,7 @@ As a best practice, navigation should be handled at the **screen** level (instea
 
 ---
 
-<CodeSurfer theme={github}>
+<CodeSurfer theme={codeTheme}>
 
 ```jsx title="App.js"
 export default function App() {
@@ -726,7 +725,7 @@ We've defined the different possible screens, but we haven't defined how to go b
 
 ---
 
-<CodeSurfer theme={github}>
+<CodeSurfer theme={codeTheme}>
 
 
 ```jsx title="Home.js"
@@ -785,7 +784,7 @@ export default function Home({ navigation }) {
 
 ---
 
-<CodeSurfer theme={github}>
+<CodeSurfer theme={codeTheme}>
 
 ```jsx title="EditNote.js"
 export default function EditNote({ navigation }) {
@@ -901,7 +900,7 @@ Displaying all the current notes in the homescreen
 
 ---
 
-<CodeSurfer theme={github}>
+<CodeSurfer theme={codeTheme}>
 
 ```jsx title="Home.js"
 export default function Home({ navigation }) {

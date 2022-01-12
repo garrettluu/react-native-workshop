@@ -1,4 +1,5 @@
 import React from 'react';
+import { github } from "@code-surfer/themes";
 import { Prism } from 'react-syntax-highlighter'
 import * as prismThemes from 'react-syntax-highlighter/dist/esm/styles/prism';
 import './theme.css';
@@ -22,7 +23,7 @@ export const code = props => {
   return <Prism language={language} style={prismThemes.prism} {...props} />
 }
 
-export default {
+export const slideTheme = {
   googleFont: 'https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap',
   fonts: {
     body: '"DM Sans", sans-serif',
@@ -55,3 +56,14 @@ export default {
     },
   }
 };
+
+let newTheme = github;
+console.log(newTheme.styles.CodeSurfer.subtitle);
+newTheme.styles.CodeSurfer.subtitle = {
+  ...github.styles.CodeSurfer.subtitle,
+  borderRadius: '.5em',
+  margin: '.3em 10em',
+  width: 'calc(100% - 20em)'
+};
+
+export const codeTheme = newTheme;
